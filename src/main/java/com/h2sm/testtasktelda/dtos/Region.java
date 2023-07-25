@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class RegionDTO {
+public class Region {
     private long id;
     private String regionName;
     private String regionShortName;

@@ -1,9 +1,8 @@
 package com.h2sm.testtasktelda.controllers;
 import com.h2sm.testtasktelda.dtos.NewRegionDTO;
-import com.h2sm.testtasktelda.dtos.RegionDTO;
+import com.h2sm.testtasktelda.dtos.Region;
 import com.h2sm.testtasktelda.services.RegionsService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,22 +14,22 @@ public class RegionsController {
     private RegionsService service;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<RegionDTO> getRegionsList() {
+    public List<Region> getRegionsList() {
         return service.getRegionList();
     }
 
     @RequestMapping(value = "/{regionId}", method = RequestMethod.GET)
-    public RegionDTO getRegionInfo(@PathVariable Long regionId) {
+    public Region getRegionInfo(@PathVariable Long regionId) {
         return service.getRegion(regionId);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public RegionDTO addRegionInfo(@RequestBody NewRegionDTO newRegion) {
+    public Region addRegionInfo(@RequestBody NewRegionDTO newRegion) {
         return service.addRegion(newRegion);
     }
 
     @RequestMapping(value = "/{regionId}", method = RequestMethod.PUT)
-    public RegionDTO updateRegionInfo(@PathVariable Long regionId, @RequestBody NewRegionDTO updatedRegion) {
+    public Region updateRegionInfo(@PathVariable Long regionId, @RequestBody NewRegionDTO updatedRegion) {
         return service.updateRegion(regionId, updatedRegion);
     }
 
