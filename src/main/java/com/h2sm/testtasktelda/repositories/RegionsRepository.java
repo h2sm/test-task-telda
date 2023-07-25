@@ -29,8 +29,8 @@ public interface RegionsRepository {
     @Insert("INSERT INTO public.regions (region_name, short_region_name) VALUES (#{regionName}, #{regionShortName})")
     void insert(NewRegionDTO newRegion);
 
-    @Update("UPDATE regions SET region_name = #{regionName}, short_region_name = #{regionShortName} WHERE region_id = #{regionId}")
-    Region updateRegionInfo(Long regionId, NewRegionDTO dto);
+    @Update("UPDATE regions SET region_name = #{dto.regionName}, short_region_name = #{dto.regionShortName} WHERE region_id = #{regionId}")
+    void updateRegionInfo(Long regionId, NewRegionDTO dto);
     @Delete("DELETE FROM regions WHERE region_id = #{regionId}")
     void deleteRegionInfo(Long regionId);
 }

@@ -31,8 +31,8 @@ public class RegionsService {
         return regionsRepository.findAllRegions();
     }
 
-    public Region updateRegion(Long regionId, NewRegionDTO updatedRegion) {
-        return regionsRepository.updateRegionInfo(regionId, updatedRegion);
+    public void updateRegion(Long regionId, NewRegionDTO updatedRegion) {
+        regionsRepository.updateRegionInfo(regionId, updatedRegion);
     }
 
     public void deleteRegion(Long regionId) {

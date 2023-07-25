@@ -31,8 +31,8 @@ public class RegionsController {
     }
 
     @RequestMapping(value = "/{regionId}", method = RequestMethod.PUT)
-    public Region updateRegionInfo(@PathVariable Long regionId, @RequestBody NewRegionDTO updatedRegion) {
-        return service.updateRegion(regionId, updatedRegion);
+    public void updateRegionInfo(@PathVariable Long regionId, @RequestBody NewRegionDTO updatedRegion) {
+        service.updateRegion(regionId, updatedRegion);
     }
 
     @RequestMapping(value = "/{regionId}", method = RequestMethod.DELETE)
