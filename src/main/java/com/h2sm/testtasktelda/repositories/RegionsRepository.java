@@ -18,14 +18,19 @@ public interface RegionsRepository {
     @Select("SELECT * FROM regions")
     List<Region> findAllRegions();
 
-    @Select("SELECT * FROM regions WHERE id = #{regionId}")
+    @Select("SELECT TOP 1 * FROM regions WHERE region_id = #{regionId}")
+    @Results({
+            @Result(property = "regionId", column = "region_id"),
+            @Result(property = "regionName", column = "region_name"),
+            @Result(property = "regionShortName", column = "short_region_name")
+    })
     Region findRegionById(Long regionId);
 
-    @Insert("INSERT INTO regions VALUES (#{regionName}, #{regionShortName})")
-    Region addRegionInfo(NewRegionDTO dto);
+    @Insert("INSERT INTO public.regions (region_name, short_region_name) VALUES (#{regionName}, #{regionShortName})")
+    void insert(NewRegionDTO newRegion);
 
-    @Update("UPDATE regions SET region_name = #{regionName}, short_region_name = #{regionShortName} WHERE id = #{regionId}")
+    @Update("UPDATE regions SET region_name = #{regionName}, short_region_name = #{regionShortName} WHERE region_id = #{regionId}")
     Region updateRegionInfo(Long regionId, NewRegionDTO dto);
-    @Delete("DELETE FROM regions WHERE id = #{regionId}")
+    @Delete("DELETE FROM regions WHERE region_id = #{regionId}")
     void deleteRegionInfo(Long regionId);
 }

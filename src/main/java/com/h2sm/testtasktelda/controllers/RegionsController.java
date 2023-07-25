@@ -1,8 +1,10 @@
 package com.h2sm.testtasktelda.controllers;
+
 import com.h2sm.testtasktelda.dtos.NewRegionDTO;
 import com.h2sm.testtasktelda.dtos.Region;
 import com.h2sm.testtasktelda.services.RegionsService;
 import lombok.AllArgsConstructor;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +26,8 @@ public class RegionsController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public Region addRegionInfo(@RequestBody NewRegionDTO newRegion) {
-        return service.addRegion(newRegion);
+    public void addRegionInfo(@RequestBody NewRegionDTO newRegion) {
+        service.addRegion(newRegion);
     }
 
     @RequestMapping(value = "/{regionId}", method = RequestMethod.PUT)

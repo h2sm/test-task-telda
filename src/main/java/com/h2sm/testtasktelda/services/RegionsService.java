@@ -4,19 +4,26 @@ import com.h2sm.testtasktelda.dtos.NewRegionDTO;
 import com.h2sm.testtasktelda.dtos.Region;
 import com.h2sm.testtasktelda.repositories.RegionsRepository;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class RegionsService {
     private final RegionsRepository regionsRepository;
-    public Region addRegion(NewRegionDTO newRegion) {
-        return regionsRepository.addRegionInfo(newRegion);
+    public void addRegion(NewRegionDTO newRegion) {
+        regionsRepository.insert(newRegion);
     }
 
+    @SneakyThrows
     public Region getRegion(Long regionId) {
+        var region = regionsRepository.findRegionById(regionId);
+        if (region == null) throw new NotFoundException("Entity not found");
         return regionsRepository.findRegionById(regionId);
     }
 
