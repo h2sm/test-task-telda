@@ -18,7 +18,7 @@ public interface RegionsRepository {
     @Select("SELECT * FROM regions")
     List<Region> findAllRegions();
 
-    @Select("SELECT TOP 1 * FROM regions WHERE region_id = #{regionId}")
+    @Select("SELECT * FROM regions WHERE region_id = #{regionId}")
     @Results({
             @Result(property = "regionId", column = "region_id"),
             @Result(property = "regionName", column = "region_name"),
