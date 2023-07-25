@@ -29,4 +29,10 @@ public class CustomResponseExceptionHandler extends ResponseEntityExceptionHandl
         return handleExceptionInternal(ex, "Desired region wasn't found", new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
+    @ExceptionHandler(value = {IllegalArgumentException.class})
+    protected ResponseEntity<Object> handleIllegalArgument(final RuntimeException ex, final WebRequest request) {
+        log.debug("Exception: received argument is illegal");
+        return handleExceptionInternal(ex, "Passed argument is illegal", new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
 }

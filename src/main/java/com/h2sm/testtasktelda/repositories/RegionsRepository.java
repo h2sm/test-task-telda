@@ -4,7 +4,6 @@ import com.h2sm.testtasktelda.dtos.NewRegionDTO;
 import com.h2sm.testtasktelda.dtos.Region;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Mapper
@@ -30,7 +29,7 @@ public interface RegionsRepository {
     void insert(NewRegionDTO newRegion);
 
     @Update("UPDATE regions SET region_name = #{dto.regionName}, short_region_name = #{dto.regionShortName} WHERE region_id = #{regionId}")
-    void updateRegionInfo(Long regionId, NewRegionDTO dto);
+    int updateRegionInfo(Long regionId, NewRegionDTO dto);
     @Delete("DELETE FROM regions WHERE region_id = #{regionId}")
-    void deleteRegionInfo(Long regionId);
+    int deleteRegionInfo(Long regionId);
 }

@@ -22,8 +22,8 @@ public class RegionsService {
 
     @SneakyThrows
     public Region getRegion(Long regionId) {
-        var region = regionsRepository.findRegionById(regionId);
-        if (region == null) throw new NotFoundException("Entity not found");
+        var desiredRegion = regionsRepository.findRegionById(regionId);
+        if (desiredRegion == null) throw new NotFoundException("Entity not found");
         return regionsRepository.findRegionById(regionId);
     }
 
@@ -32,10 +32,13 @@ public class RegionsService {
     }
 
     public void updateRegion(Long regionId, NewRegionDTO updatedRegion) {
-        regionsRepository.updateRegionInfo(regionId, updatedRegion);
+        int rowsAffected = regionsRepository.updateRegionInfo(regionId, updatedRegion);
+        if (rowsAffected == 0) throw new IllegalArgumentException();
+
     }
 
     public void deleteRegion(Long regionId) {
-        regionsRepository.deleteRegionInfo(regionId);
+        int rowsAffected = regionsRepository.deleteRegionInfo(regionId);
+        if (rowsAffected == 0) throw new IllegalArgumentException();
     }
 }
