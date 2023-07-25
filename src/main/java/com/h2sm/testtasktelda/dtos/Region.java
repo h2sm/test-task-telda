@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class Region {
-    private long id;
+    private long regionId;
     private String regionName;
     private String regionShortName;
 }

@@ -10,6 +10,11 @@ import java.util.List;
 @Mapper
 @Repository
 public interface RegionsRepository {
+    @Results({
+            @Result(property = "regionId", column = "region_id"),
+            @Result(property = "regionName", column = "region_name"),
+            @Result(property = "regionShortName", column = "short_region_name")
+    })
     @Select("SELECT * FROM regions")
     List<Region> findAllRegions();
 
