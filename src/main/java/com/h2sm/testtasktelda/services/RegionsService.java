@@ -34,7 +34,6 @@ public class RegionsService {
     public void updateRegion(Long regionId, NewRegionDTO updatedRegion) {
         int rowsAffected = regionsRepository.updateRegionInfo(regionId, updatedRegion);
         if (rowsAffected == 0) throw new IllegalArgumentException();
-
     }
 
     public void deleteRegion(Long regionId) {

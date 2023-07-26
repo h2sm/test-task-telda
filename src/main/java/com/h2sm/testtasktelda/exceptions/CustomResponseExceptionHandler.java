@@ -25,7 +25,7 @@ public class CustomResponseExceptionHandler extends ResponseEntityExceptionHandl
 
     @ExceptionHandler(value = {NotFoundException.class})
     protected ResponseEntity<Object> handleNotfoundEntity(final RuntimeException ex, final WebRequest request) {
-        log.debug("Exception: cannot save 2 regions with the same name");
+        log.debug("Exception: Desired region wasn't found");
         return handleExceptionInternal(ex, "Desired region wasn't found", new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
