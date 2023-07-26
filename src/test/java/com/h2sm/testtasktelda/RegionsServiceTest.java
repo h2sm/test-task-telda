@@ -25,7 +25,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SqlGroup({
         @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {"classpath:testDataSQL.sql"}),
 })
-public class TestRegionsService {
+public class RegionsServiceTest {
     @Autowired
     private RegionsService service;
 
