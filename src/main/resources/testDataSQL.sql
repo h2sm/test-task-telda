@@ -1,3 +1,3 @@
-INSERT INTO regions (region_name, short_region_name) VALUES ('Khabarovskaya oblast', 'LO');
-INSERT INTO regions (region_name, short_region_name) VALUES ('Bebrovskaya oblast', 'MO');
-INSERT INTO regions (region_name, short_region_name) VALUES ('Kaliningradskaya kray', 'PK');
+INSERT INTO regions (region_name, short_region_name) VALUES ('Khabarovskaya oblast', 'LO') ON DUPLICATE KEY UPDATE region_id = region_id +5;
+INSERT INTO regions (region_name, short_region_name) VALUES ('Bebrovskaya oblast', 'MO') ON DUPLICATE KEY UPDATE region_id = region_id +5;
+INSERT INTO regions (region_name, short_region_name) VALUES ('Kaliningradskaya kray', 'PK') ON DUPLICATE KEY UPDATE region_id = region_id +5;

@@ -1,3 +1,5 @@
+set mode MySQL;
+
 CREATE TABLE regions (
     region_id         int AUTO_INCREMENT NOT NULL,
     region_name       text UNIQUE NOT NULL,

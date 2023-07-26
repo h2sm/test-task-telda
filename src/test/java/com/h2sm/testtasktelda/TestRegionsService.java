@@ -49,7 +49,7 @@ public class TestRegionsService {
     @Test
     public void tryDeleteExistingRegionAndCheck() {
         service.deleteRegion(1L);
-        assertEquals(5, service.getRegionList().size());
+        assertEquals(7, service.getRegionList().size());
     }
 
     @Test
@@ -60,8 +60,8 @@ public class TestRegionsService {
     @Test
     public void tryAddTwoSameRegions() {
         var duplicatedRegion = NewRegionDTO.builder()
-                .regionName("SAN-FRANCISCO")
-                .regionShortName("DISCO")
+                .regionName("TESTREGIONNAME")
+                .regionShortName("VERYCOOLSHORTNAME")
                 .build();
 
         service.addRegion(duplicatedRegion);
@@ -71,6 +71,13 @@ public class TestRegionsService {
 
     @Test
     public void tryUpdateRegionAndCheck() {
+        var desiredRegion = service.getRegion(2L);
+        desiredRegion.setRegionName("KARELIYA");
+
+        service.updateRegion(2L, new NewRegionDTO(desiredRegion.getRegionName(), desiredRegion.getRegionShortName()));
+
+        assertEquals(desiredRegion, service.getRegion(2L));
+
     }
 
 }
