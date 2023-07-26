@@ -1,6 +1,7 @@
-package com.h2sm.testtasktelda.controllers;
+package com.h2sm.testtasktelda;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.h2sm.testtasktelda.controllers.RegionsController;
 import com.h2sm.testtasktelda.dtos.NewRegionDTO;
 import com.h2sm.testtasktelda.repositories.RegionsRepository;
 import com.h2sm.testtasktelda.services.RegionsService;
